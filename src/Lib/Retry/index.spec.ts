@@ -24,7 +24,7 @@ describe('Retry', () => {
             expect(result).toEqual('test');
         });
 
-        test.only('should throw error if retry limit reached without success', async () => {
+        test('should throw error if retry limit reached without success', async () => {
             const config = {
                 action: jest.fn().mockImplementation(() => { throw new Error('message') }),
                 shouldRetryOnResult: () => false,
