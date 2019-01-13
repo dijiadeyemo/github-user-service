@@ -3,7 +3,7 @@
     "description": "REST API to search users on GitHub",
     "repository": {},
     "scripts": {
-        "start": "npm run seed && npm run serve",
+        "start": "npm run serve",
         "serve": "node dist/server.js",
         "build": "npm run build-ts && npm run tslint",
         "build-ts": "tsc",

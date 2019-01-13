@@ -1,6 +1,6 @@
 
 import IRetryable from "./IRetryable";
-import retry from 'async-retry';
+import retry from "async-retry";
 
 export default class Retry {
 
@@ -8,12 +8,12 @@ export default class Retry {
 
     async execute(): Promise<any> {
         const { retries } = this.retryable;
-        const retryAction = this.prepareRetryableAction()
-        const result = await retry(retryAction, { retries, factor: 1 })
-        return result
+        const retryAction = this.prepareRetryableAction();
+        const result = await retry(retryAction, { retries, factor: 1 });
+        return result;
     }
 
-    //TODO refactor
+    // TODO refactor
     private prepareRetryableAction(): (bail: any) => Promise<any> {
         const retryableAction = async (bail: (arg: any) => any) => {
             let result;
@@ -21,11 +21,11 @@ export default class Retry {
                 result = await this.retryable.action();
             } catch (e) {
                 const retryOnError = await this.retryable.shouldRetryOnError(e);
-                if (retryOnError) throw e
-                return bail(e)
+                if (retryOnError) throw e;
+                return bail(e);
             }
             const retryOnResult = this.retryable.shouldRetryOnResult(result);
-            if (retryOnResult) throw new Error('Invalid result')
+            if (retryOnResult) throw new Error("Invalid result");
             return result;
 
         };
