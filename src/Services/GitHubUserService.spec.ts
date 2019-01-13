@@ -1,7 +1,7 @@
+import "reflect-metadata";
 import GitHubUserQuery from "../Models/GitHubUserQuery";
 import GitHubUserService from "./GitHubUserService";
 import GitHubClient from "../Clients/GithubClient";
-import "reflect-metadata";
 
 describe("GitHubUserService", () => {
     describe("search()", () => {

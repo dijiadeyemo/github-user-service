@@ -1,3 +1,4 @@
+import "reflect-metadata";
 import GitHubClient from "./GithubClient";
 import axios from "axios";
 

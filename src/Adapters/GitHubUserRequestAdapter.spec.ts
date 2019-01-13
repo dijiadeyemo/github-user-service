@@ -5,7 +5,7 @@ describe("GitHubUserRequestAdapter", () => {
         test("should get a GitHubUserQuery object from a request query object", () => {
             const request = {
                 name: "diji",
-                language: "java, javascript"
+                language: "java,javascript"
             };
             const gitHubUserQuery = GitHubUserRequestAdapter.toGitHubUserQuery(request);
             expect(gitHubUserQuery).toEqual({
