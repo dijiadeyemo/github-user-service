@@ -1,4 +1,4 @@
-import GitHubUser from "../models/GitHubUser";
+import GitHubUser from "../Models/GitHubUser";
 import GitHubUserQuery from "../Models/GitHubUserQuery";
 
 export default interface IGitHubUserService {
