@@ -1,16 +1,19 @@
 import request from "supertest";
 import app from "./app";
 
-describe("app", () => {
+describe("Integration Tests", () => {
 
-    test("GET /api/v1/notexisting", (done) => {
-        request(app)
-            .get("/api/v1/notexisting")
-            .expect(404, done);
+
+    describe("GET /api/v1/notexisting", () => {
+        test("shuold return a 404 error", (done) => {
+            request(app)
+                .get("/api/v1/notexisting")
+                .expect(404, done);
+        });
     });
 
     describe("GET /api/v1/users", () => {
-        test("should return a 500 error if no parameter are provided", (done) => {
+        test("should return a 422 error if no parameter are provided", (done) => {
             request(app)
                 .get("/api/v1/users")
                 .expect(422, done);

@@ -31,7 +31,7 @@ describe("GitHubUserService", () => {
             }]);
         });
 
-        test.only("should retry with next language if a timeout error occured", async () => {
+        test("should retry with next language if a timeout error occured", async () => {
             const query: GitHubUserQuery = {
                 name: "dijiadeyemo",
                 languages: ["ruby", "javascript", "java"],
