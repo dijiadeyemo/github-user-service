@@ -38,7 +38,7 @@ describe("GitHubUserService", () => {
             };
             const githubClient = new GitHubClient();
             const spy = jest.spyOn(githubClient, "findUsersByNameAndLanguage");
-            
+
             const users = await new GitHubUserService(githubClient).search(query);
 
             expect(spy).toBeCalledTimes(2);
