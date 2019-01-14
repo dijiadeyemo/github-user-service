@@ -1,8 +1,9 @@
-import { query } from 'express-validator/check'
+import { query } from "express-validator/check";
+
 const GitHubUserSearchValidator = [
-    query('name')
+    query("name")
         .not().isEmpty(),
-    query('language')
+    query("language")
         .not().isEmpty()
 ];
 
