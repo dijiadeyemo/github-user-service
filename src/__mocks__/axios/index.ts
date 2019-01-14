@@ -7,6 +7,8 @@ axios.get = jest.fn().mockImplementation((url: string) => {
             return mockUserSearchPayload;
         case "https://api.github.com/search/users?q=user:dijiadeyemo+language:java":
             return mockEmptySearchPayload;
+        case "https://api.github.com/search/users?q=user:dijiadeyemo+language:ruby":
+            throw { message: "timeout", code: "ECONNABORTED" };
         case "https://api.github.com/users/dijiadeyemo":
             return mockUserPayload[0];
         default:

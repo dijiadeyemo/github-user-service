@@ -18,7 +18,7 @@ describe("GitHubUserService", () => {
             }]);
         });
 
-        test("should retry is next language if a language is not found", async () => {
+        test("should retry with next language if a language is not found", async () => {
             const query: GitHubUserQuery = {
                 name: "dijiadeyemo",
                 languages: ["java", "javascript"],
@@ -30,5 +30,26 @@ describe("GitHubUserService", () => {
                 login: "dijiadeyemo",
             }]);
         });
+
+        test.only("should retry with next language if a timeout error occured", async () => {
+            const query: GitHubUserQuery = {
+                name: "dijiadeyemo",
+                languages: ["ruby", "javascript", "java"],
+            };
+            const githubClient = new GitHubClient();
+            const spy = jest.spyOn(githubClient, "findUsersByNameAndLanguage");
+            
+            const users = await new GitHubUserService(githubClient).search(query);
+
+            expect(spy).toBeCalledTimes(2);
+            expect(spy).toBeCalledWith("dijiadeyemo", "ruby");
+            expect(spy).toBeCalledWith("dijiadeyemo", "javascript");
+            expect(users).toMatchObject([{
+                name: "Diji Adeyemo",
+                followers: 1,
+                login: "dijiadeyemo",
+            }]);
+        });
+
     });
 });
