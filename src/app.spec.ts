@@ -13,7 +13,7 @@ describe("app", () => {
         test("should return a 500 error if no parameter are provided", (done) => {
             request(app)
                 .get("/github/users")
-                .expect(500, done);
+                .expect(422, done);
         });
     });
 
